@@ -5,7 +5,7 @@
 //  Created by Dylan  on 11/26/25.
 //
 
-import Flow
+import NavigationFlow
 import SwiftUI
 
 struct PushRoute: Routable {

@@ -18,11 +18,17 @@ public final class Navigator {
     public var stack: [AnyRoute] = []
     public var presentedRoute: PresentedRoute?
 
-    public convenience init(root: any Routable = EmptyRoute(), parent: Navigator? = nil) {
+    public convenience init(
+        root: any Routable = EmptyRoute(),
+        parent: Navigator? = nil
+    ) {
         self.init(root: AnyRoute(root), parent: parent)
     }
 
-    public init(root: AnyRoute, parent: Navigator?) {
+    public init(
+        root: AnyRoute,
+        parent: Navigator?
+    ) {
         self.root = root
         self.parent = parent
     }

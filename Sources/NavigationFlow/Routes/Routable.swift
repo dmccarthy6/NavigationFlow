@@ -8,10 +8,17 @@
 import Foundation
 import SwiftUI
 
-public protocol Routable: HashableType {
+public protocol Routable: Hashable, Identifiable {
+    associatedtype Screen: View
     var id: ID { get }
     var navigationType: NavigationType { get }
-    var body: any View { get }
+
+    @MainActor
+    var body: Screen { get }
+}
+
+extension Routable {
+    public var navigationType: NavigationType { .push }
 }
 
 extension Routable {

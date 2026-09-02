@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-public struct AnyRoute: Routable {
+/// Type erased structure that enables abstract navigation. This
+/// is used internally and not intended for use outside NavigationFlow.
+public struct AnyRoute: Hashable, Identifiable {
     public let id: AnyHashable
     public var navigationType: NavigationType
     public let body: any View
@@ -44,6 +46,12 @@ public struct AnyRoute: Routable {
     ) -> Bool {
         guard let cast = asType(type) else { return false }
         return condition(cast)
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(typeId)
+        hasher.combine(wrapped)
     }
 
     public static func == (lhs: Self, rhs: Self) -> Bool {

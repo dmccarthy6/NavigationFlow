@@ -8,11 +8,10 @@
 import Foundation
 import SwiftUI
 
-public struct EmptyRoute: Routable {
-    public let id = UUID()
-    public var navigationType: NavigationType = .push
+@NavigationRoute
+public struct EmptyRoute {
     public init() {}
-    public var body: any View {
-        EmptyView()
+    public var body: EmptyView {
+        .init()
     }
 }
